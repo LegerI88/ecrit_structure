@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Écrit structuré — Le contrat de travail</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F3EE;--surface:#FFF;--s2:#EDEBE4;--border:#DDD9CF;--border2:#C5C0B5;
+  --text:#1C1A16;--text2:#6A6560;--text3:#9A9690;
+  --or:#C8780A;--orl:#FEF5E0;--ord:#9A5C06;
+  --teal:#0A9E6E;--tl:#E2F7EF;--td:#07774F;
+  --blue:#1A5DB8;--bl:#EBF2FD;--bd:#124490;
+  --coral:#D24728;--cl:#FDEEE9;--cd:#A33519;
+  --purple:#5A48D8;--pl:#ECEAFF;--pd:#3C2EB0;
+  --red:#BF2B2B;--rl:#FDEAEA;
+  --green:#267026;--gl:#EEF7EE;
+  --r:12px;--rsm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.7}
+.app{max-width:820px;margin:0 auto;padding:1.5rem 1.25rem 5rem}
+.screen{display:none}.screen.active{display:block;animation:fu .3s ease}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+h1{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;line-height:1.2;color:var(--text)}
+h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.75rem}
+h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+p{color:var(--text2);line-height:1.75;margin-bottom:.5rem}
+strong{color:var(--text);font-weight:500}
+ul,ol{padding-left:1.4rem;color:var(--text2);font-size:14px;line-height:2.1}
+li{margin-bottom:2px}
+
+.badge{display:inline-block;padding:3px 11px;border-radius:999px;font-size:12px;font-weight:500}
+.bo{background:var(--orl);color:var(--ord)}.bt{background:var(--tl);color:var(--td)}
+.bp{background:var(--pl);color:var(--pd)}.bb{background:var(--bl);color:var(--bd)}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;margin-bottom:1rem;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.cl-or{border-left:4px solid var(--or);border-radius:0 var(--r) var(--r) 0}
+.cl-blue{border-left:4px solid var(--blue);border-radius:0 var(--r) var(--r) 0}
+.cl-teal{border-left:4px solid var(--teal);border-radius:0 var(--r) var(--r) 0}
+.cl-purple{border-left:4px solid var(--purple);border-radius:0 var(--r) var(--r) 0}
+.cl-coral{border-left:4px solid var(--coral);border-radius:0 var(--r) var(--r) 0}
+.cbg-blue{background:var(--bl);border-color:#A8C8F5}
+.cbg-or{background:var(--orl);border-color:#F5D78A}
+.cbg-teal{background:var(--tl);border-color:#9FE0CB}
+.cbg-purple{background:var(--pl);border-color:#C5C0FF}
+
+.tip{background:#FFFBEF;border:1px solid #F5D78A;border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1rem;font-size:14px;color:#7A5C08}
+.info-box{background:var(--bl);border:1px solid #A8C8F5;border-radius:var(--rsm);padding:12px 16px;margin-bottom:1rem;font-size:14px;color:var(--bd);display:flex;gap:10px;align-items:flex-start}
+.warn-box{background:#FFFBEF;border:1px solid #F5D78A;border-radius:var(--rsm);padding:12px 16px;margin-bottom:1rem;font-size:14px;color:#7A5C08;display:flex;gap:10px;align-items:flex-start}
+.success-box{background:var(--tl);border:1px solid #9FE0CB;border-radius:var(--rsm);padding:12px 16px;margin-bottom:1rem;font-size:14px;color:var(--td);display:flex;gap:10px;align-items:flex-start}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:var(--rsm);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border:1.5px solid var(--border2);background:var(--surface);color:var(--text);transition:all .15s}
+.btn:hover{background:var(--s2);transform:translateY(-1px)}
+.btn-or{background:var(--or);color:#fff;border-color:var(--or)}.btn-or:hover{background:var(--ord)}
+.btn-blue{background:var(--blue);color:#fff;border-color:var(--blue)}.btn-blue:hover{background:var(--bd)}
+.btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}.btn-teal:hover{background:var(--td)}
+.btn-lg{padding:14px 32px;font-size:16px}
+.btn-block{display:flex;width:100%;justify-content:center;margin-top:1rem}
+
+.section-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;background:var(--blue);padding:.65rem 1.25rem;border-radius:var(--rsm);margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between}
+.section-pts{font-size:12px;opacity:.85}
+
+.answer-area{width:100%;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);resize:vertical;line-height:1.75;transition:border-color .15s;min-height:120px}
+.answer-area:focus{outline:none;border-color:var(--blue)}
+.answer-area.large{min-height:220px}
+.answer-area.xlarge{min-height:340px}
+
+.rev-btn{background:none;border:none;cursor:pointer;font-size:13px;color:var(--blue);text-decoration:underline;padding:6px 0;font-family:'DM Sans',sans-serif;display:block;margin-top:8px}
+.rev-btn:hover{color:var(--bd)}
+.reveal-content{display:none;margin-top:10px;border-radius:var(--rsm);font-size:14px;line-height:1.75}
+.reveal-content.open{display:block}
+
+.step-nav{display:flex;gap:10px;margin-top:1.5rem;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.step-info{font-size:13px;color:var(--text3)}
+.dots{display:flex;gap:7px;margin:.5rem 0 1rem}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--border)}
+.dot.on{background:var(--blue)}.dot.dn{background:var(--teal)}
+
+.note-circle{width:140px;height:140px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1rem;border:5px solid var(--blue)}
+.note-val{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--blue);line-height:1}
+.note-denom{font-size:14px;color:var(--text3)}
+.mention{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;text-align:center;margin:.5rem 0}
+.stars{font-size:26px;letter-spacing:5px;color:var(--or);text-align:center;margin:.5rem 0}
+.comment-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;margin:1rem 0;font-size:14px;color:var(--text2);line-height:1.85}
+
+.bareme-table{width:100%;border-collapse:collapse;font-size:13px;margin:.75rem 0}
+.bareme-table th{text-align:left;padding:8px 12px;background:var(--s2);font-weight:600;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border)}
+.bareme-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.bareme-table td:first-child{font-weight:500;color:var(--text);white-space:nowrap}
+.bareme-table td:last-child{text-align:center;font-weight:600;color:var(--blue);white-space:nowrap}
+
+.score-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.score-label{font-size:14px;color:var(--text);flex:1}
+.score-slider{flex:0 0 120px}
+.score-display{font-size:14px;font-weight:600;color:var(--blue);min-width:50px;text-align:right}
+
+.pt-chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;background:var(--orl);color:var(--ord)}
+
+.corr-section{padding:1rem 1.25rem;border-radius:var(--rsm);margin-bottom:.75rem}
+.corr-intro{background:var(--pl);border:1px solid #C5C0FF}
+.corr-dev{background:var(--tl);border:1px solid #9FE0CB}
+.corr-ccl{background:var(--orl);border:1px solid #F5D78A}
+
+.hr{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+
+.doc-header{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);margin-bottom:6px}
+.doc-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.doc-source{font-size:11px;color:var(--text3);margin-bottom:.75rem}
+.doc-body{font-size:14px;color:var(--text2);line-height:1.85}
+
+@media(max-width:520px){h1{font-size:1.4rem}.step-nav{flex-direction:column}}
+@media print{
+  body > *{display:none !important}
+  #print-zone{display:block !important}
+  .print-page{page-break-after:always;padding:1.5cm 2cm}
+  .print-page:last-child{page-break-after:avoid}
+  @page{margin:0}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ══ PAGE DE GARDE ══════════════════════════════════════════════════════ -->
+<div id="s-cover" class="screen active">
+<div style="text-align:center;padding:2rem 0 1.5rem">
+  <div style="font-size:56px;margin-bottom:1rem">✍️</div>
+  <div class="badge bb" style="margin-bottom:.75rem">EXERCICE — ÉCRIT STRUCTURÉ</div>
+  <h1 style="margin-bottom:.5rem">Le contrat de travail</h1>
+  <p style="font-size:1rem;color:var(--text2);margin-bottom:.25rem">Éco-Droit — Terminale Bac Pro</p>
+  <p style="font-size:13px;color:var(--text3);margin-bottom:2rem">LEGER Isabelle — 1ère &amp; Tle Bac Pro</p>
+</div>
+
+<div class="card cbg-blue" style="margin-bottom:1rem">
+  <h3 style="color:var(--bd);margin-bottom:.75rem">📋 Présentation de l'exercice</h3>
+  <p style="color:var(--bd);font-size:14px">Tu vas rédiger un <strong>écrit structuré complet</strong> à partir d'un dossier de 4 documents sur le contrat de travail. L'exercice est guidé étape par étape. La correction modèle et le barème s'affichent à la fin.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:1rem">
+    <div style="background:#fff;border-radius:var(--rsm);padding:.75rem;text-align:center;border:1px solid #A8C8F5">
+      <div style="font-size:20px;margin-bottom:4px">📄</div>
+      <div style="font-size:12px;font-weight:500;color:var(--bd)">4 documents</div>
+      <div style="font-size:11px;color:var(--text3)">à analyser</div>
+    </div>
+    <div style="background:#fff;border-radius:var(--rsm);padding:.75rem;text-align:center;border:1px solid #A8C8F5">
+      <div style="font-size:20px;margin-bottom:4px">✍️</div>
+      <div style="font-size:12px;font-weight:500;color:var(--bd)">5 étapes</div>
+      <div style="font-size:11px;color:var(--text3)">guidées</div>
+    </div>
+    <div style="background:#fff;border-radius:var(--rsm);padding:.75rem;text-align:center;border:1px solid #A8C8F5">
+      <div style="font-size:20px;margin-bottom:4px">📤</div>
+      <div style="font-size:12px;font-weight:500;color:var(--bd)">Export PDF</div>
+      <div style="font-size:11px;color:var(--text3)">à remettre au prof</div>
+    </div>
+    <div style="background:#fff;border-radius:var(--rsm);padding:.75rem;text-align:center;border:1px solid #A8C8F5">
+      <div style="font-size:20px;margin-bottom:4px">✅</div>
+      <div style="font-size:12px;font-weight:500;color:var(--bd)">Correction</div>
+      <div style="font-size:11px;color:var(--text3)">modèle complète</div>
+    </div>
+  </div>
+</div>
+
+<div class="card cl-or">
+  <h3>Sujet</h3>
+  <p style="font-size:14px;margin:.5rem 0">À partir du dossier documentaire et de vos connaissances, rédigez une réponse structurée et argumentée à la question :</p>
+  <div style="background:var(--surface);border:2px solid var(--or);border-radius:var(--rsm);padding:1rem 1.25rem;margin:.75rem 0;text-align:center">
+    <p style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin:0">"Le contrat de travail : quelles protections pour le salarié ?"</p>
+  </div>
+  <p style="font-size:13px;color:var(--text3);margin:0">Dans une introduction, présenter la problématique, définir les concepts essentiels et annoncer le plan.</p>
+</div>
+
+<div class="card cl-blue" style="font-size:13px">
+  <strong>Plan proposé :</strong>
+  <div style="margin-top:.75rem;line-height:2.2">
+    <div><strong>I. Le contrat de travail, un cadre juridique protecteur pour le salarié</strong></div>
+    <div style="padding-left:1.25rem;color:var(--text2)">A. Les éléments constitutifs du contrat de travail</div>
+    <div style="padding-left:1.25rem;color:var(--text2)">B. Les droits fondamentaux garantis au salarié</div>
+    <div style="margin-top:.5rem"><strong>II. Des protections qui connaissent des limites et des risques</strong></div>
+    <div style="padding-left:1.25rem;color:var(--text2)">A. La précarité liée aux contrats atypiques</div>
+    <div style="padding-left:1.25rem;color:var(--text2)">B. Le risque de rupture du contrat et ses conséquences</div>
+  </div>
+</div>
+
+<div class="warn-box"><span>⚠️</span><div>Lis l'intégralité des documents <strong>avant</strong> de commencer à rédiger. Souligne les idées importantes. Rédige toujours avec tes propres mots.</div></div>
+<div class="btn-block"><button class="btn btn-blue btn-lg" onclick="goTo('s-docs')">Lire le dossier documentaire →</button></div>
+</div>
+
+<!-- ══ DOSSIER DOCUMENTAIRE ══════════════════════════════════════════════ -->
+<div id="s-docs" class="screen">
+<div class="section-title"><span>📂 Dossier documentaire</span><span class="section-pts">4 documents</span></div>
+
+<!-- DOC 1 -->
+<div class="card">
+  <div class="doc-header">Document 1</div>
+  <div class="doc-title">Les trois éléments constitutifs du contrat de travail</div>
+  <div class="doc-source">Code du travail — Art. L.1221-1 et jurisprudence de la Cour de cassation</div>
+  <div class="doc-body">
+    Selon l'article L.1221-1 du Code du travail, le contrat de travail est soumis aux règles du droit commun. Mais c'est la jurisprudence qui a précisé les trois éléments indispensables pour qu'un contrat soit qualifié de contrat de travail :<br><br>
+    <strong>1. Une prestation de travail :</strong> le salarié s'engage à accomplir un travail défini pour le compte de son employeur. Cette prestation peut être physique, intellectuelle ou artistique.<br><br>
+    <strong>2. Une rémunération :</strong> en contrepartie de son travail, le salarié perçoit un salaire. Celui-ci ne peut être inférieur au SMIC (Salaire Minimum Interprofessionnel de Croissance), fixé à 11,65 € brut/heure en 2024.<br><br>
+    <strong>3. Un lien de subordination juridique :</strong> c'est l'élément distinctif fondamental. Le salarié travaille sous l'autorité de l'employeur, qui peut lui donner des ordres, contrôler l'exécution du travail et sanctionner les manquements. Sans lien de subordination, il ne peut y avoir de contrat de travail — il s'agirait alors d'un contrat de prestation de services.<br><br>
+    Ces trois éléments doivent être réunis simultanément. La qualification de contrat de travail s'impose même si les parties ont choisi une autre appellation.
+  </div>
+  <div style="font-size:11px;color:var(--text3);margin-top:.75rem">Source : Code du travail et Cass. soc., 22 juillet 1954 (arrêt Bardot)</div>
+</div>
+
+<!-- DOC 2 -->
+<div class="card">
+  <div class="doc-header">Document 2</div>
+  <div class="doc-title">Les droits du salarié : un socle de protections légales</div>
+  <div class="doc-source">Ministère du Travail — Fiche pratique — 2024</div>
+  <div class="doc-body">
+    Le contrat de travail ouvre au salarié un ensemble de droits garantis par la loi, qui s'appliquent indépendamment des clauses négociées individuellement :<br><br>
+    <ul>
+      <li><strong>Le droit au salaire</strong> : versé au moins une fois par mois, il ne peut être inférieur au SMIC. Tout manquement expose l'employeur à des sanctions pénales.</li>
+      <li><strong>Le droit aux congés payés</strong> : 2,5 jours ouvrables par mois de travail effectif, soit 30 jours par an (art. L.3141-3 Code du travail).</li>
+      <li><strong>La protection sociale</strong> : affiliation obligatoire à la Sécurité sociale (maladie, retraite, chômage). Les cotisations sont partagées entre l'employeur et le salarié.</li>
+      <li><strong>La protection contre le licenciement abusif</strong> : tout licenciement doit être justifié par une cause réelle et sérieuse. Le salarié dispose d'un droit de recours devant le Conseil de prud'hommes.</li>
+      <li><strong>La durée légale du travail</strong> : 35 heures par semaine. Les heures supplémentaires donnent lieu à une majoration de salaire (25 % pour les 8 premières heures, 50 % au-delà).</li>
+    </ul>
+    <br>Ces droits constituent un plancher en dessous duquel aucun accord ne peut descendre, même avec l'accord du salarié.
+  </div>
+  <div style="font-size:11px;color:var(--text3);margin-top:.75rem">Source : Ministère du Travail, service-public.fr, 2024</div>
+</div>
+
+<!-- DOC 3 — Tableau -->
+<div class="card">
+  <div class="doc-header">Document 3 — Tableau</div>
+  <div class="doc-title">Répartition des contrats de travail en France en 2023</div>
+  <div class="doc-source">Source : INSEE — Enquête Emploi — 2023 — En % des salariés</div>
+  <div style="overflow-x:auto;margin-top:.5rem">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:380px">
+      <tr style="background:var(--bl)">
+        <th style="padding:8px 12px;text-align:left;font-weight:600;color:var(--bd);border-bottom:2px solid #A8C8F5">Type de contrat</th>
+        <th style="padding:8px 12px;text-align:center;font-weight:600;color:var(--bd);border-bottom:2px solid #A8C8F5">2015</th>
+        <th style="padding:8px 12px;text-align:center;font-weight:600;color:var(--bd);border-bottom:2px solid #A8C8F5">2019</th>
+        <th style="padding:8px 12px;text-align:center;font-weight:600;color:var(--bd);border-bottom:2px solid #A8C8F5">2023</th>
+      </tr>
+      <tr><td style="padding:7px 12px;border-bottom:1px solid var(--border)">CDI (contrat à durée indéterminée)</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">85,5 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">84,2 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border);font-weight:500;color:var(--td)">83,1 %</td></tr>
+      <tr style="background:var(--s2)"><td style="padding:7px 12px;border-bottom:1px solid var(--border)">CDD (contrat à durée déterminée)</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">9,2 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">9,8 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border);font-weight:500">10,3 %</td></tr>
+      <tr><td style="padding:7px 12px;border-bottom:1px solid var(--border)">Intérim</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">2,8 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">3,1 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border);font-weight:500">3,4 %</td></tr>
+      <tr style="background:var(--s2)"><td style="padding:7px 12px;border-bottom:1px solid var(--border)">Apprentissage / alternance</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">1,5 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border)">1,9 %</td><td style="padding:7px 12px;text-align:center;border-bottom:1px solid var(--border);font-weight:500;color:var(--bd)">2,6 %</td></tr>
+      <tr><td style="padding:7px 12px">Autres (saisonnier, etc.)</td><td style="padding:7px 12px;text-align:center">1,0 %</td><td style="padding:7px 12px;text-align:center">1,0 %</td><td style="padding:7px 12px;text-align:center;font-weight:500">0,6 %</td></tr>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--text2);margin-top:.75rem;font-style:italic">Le CDI reste le contrat de référence mais sa part diminue légèrement au profit des contrats précaires (CDD, intérim). L'alternance connaît une forte hausse (+73 % en 8 ans) suite aux politiques publiques d'encouragement.</p>
+</div>
+
+<!-- DOC 4 -->
+<div class="card">
+  <div class="doc-header">Document 4</div>
+  <div class="doc-title">Le licenciement : une rupture encadrée par la loi</div>
+  <div class="doc-source">Liaisons sociales — Dossier spécial rupture du contrat de travail — 2023</div>
+  <div class="doc-body">
+    La rupture du contrat de travail est un moment particulièrement sensible, tant pour le salarié que pour l'employeur. La loi prévoit plusieurs modes de rupture, chacun encadré par des conditions strictes.<br><br>
+    <strong>Le licenciement pour motif personnel</strong> doit reposer sur une cause réelle et sérieuse liée au comportement ou aux aptitudes du salarié. Il impose le respect d'une procédure : convocation à un entretien préalable, notification écrite du licenciement, respect d'un préavis. En cas de non-respect, l'employeur s'expose à une condamnation aux prud'hommes.<br><br>
+    <strong>Le licenciement pour motif économique</strong> intervient en cas de difficultés économiques, de mutations technologiques ou de réorganisation nécessaire à la sauvegarde de la compétitivité. Il ouvre droit à des protections supplémentaires pour le salarié : priorité de réembauche, aide au reclassement.<br><br>
+    <strong>La rupture conventionnelle</strong>, créée par la loi du 25 juin 2008, permet une séparation à l'amiable entre l'employeur et le salarié, avec versement d'une indemnité spécifique et ouverture des droits au chômage. En 2023, plus de 500 000 ruptures conventionnelles ont été homologuées en France.<br><br>
+    En cas de licenciement abusif, le salarié peut saisir le Conseil de prud'hommes et obtenir des dommages et intérêts. Depuis les ordonnances Macron de 2017, leur montant est encadré par un barème légal.
+  </div>
+  <div style="font-size:11px;color:var(--text3);margin-top:.75rem">Source : Liaisons sociales, Rupture du contrat de travail, 2023</div>
+</div>
+
+<div class="tip"><strong>Rappel méthodologique :</strong> Avant de rédiger, note au brouillon les idées de chaque document qui correspondent à chaque partie du plan. Utilise 2 couleurs différentes pour distinguer partie I et partie II.</div>
+<div class="btn-block"><button class="btn btn-blue btn-lg" onclick="goTo('s-intro')">Commencer la rédaction →</button></div>
+</div>
+
+<!-- ══ ÉTAPE 1 : INTRODUCTION ════════════════════════════════════════════ -->
+<div id="s-intro" class="screen">
+<div class="section-title"><span>✍️ Étape 1 — L'introduction</span><span class="section-pts">/ 5 points</span></div>
+<div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+<div class="card cbg-or">
+  <h3 style="color:var(--ord)">Rappel — Les 4 éléments de l'introduction</h3>
+  <ol style="margin-top:.5rem;color:var(--ord)">
+    <li><strong>Accroche</strong> : chiffre, actualité, fait général — répond à QUI ? QUOI ?</li>
+    <li><strong>Concepts clés</strong> : définir au moins 2 termes essentiels du sujet</li>
+    <li><strong>Problématique</strong> : reprendre la question du sujet</li>
+    <li><strong>Annonce du plan</strong> : "Dans une première partie... dans une seconde partie..."</li>
+  </ol>
+</div>
+
+<div class="warn-box"><span>💡</span><div>Pour l'accroche, tu peux utiliser le chiffre du document 3 (83,1 % des salariés en CDI) ou la notion de "500 000 ruptures conventionnelles en 2023" du document 4.</div></div>
+
+<label style="font-size:13px;font-weight:600;color:var(--blue);display:block;margin-bottom:.5rem">Rédige ton introduction ici :</label>
+<textarea class="answer-area large" id="ta-intro" placeholder="Accroche : ...&#10;&#10;Concepts : ...&#10;&#10;Problématique : ...&#10;&#10;Annonce du plan : ..."></textarea>
+
+
+
+<div class="step-nav">
+  <span class="step-info">Étape 1 / 5</span>
+  <button class="btn btn-blue" onclick="goTo('s-dev1')">Étape 2 : Partie I →</button>
+</div>
+</div>
+
+<!-- ══ ÉTAPE 2 : PARTIE I ════════════════════════════════════════════════ -->
+<div id="s-dev1" class="screen">
+<div class="section-title"><span>✍️ Étape 2 — Partie I du développement</span><span class="section-pts">/ 5 points</span></div>
+<div class="dots"><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+<div class="card cl-teal" style="font-size:14px">
+  <strong>I. Le contrat de travail, un cadre juridique protecteur pour le salarié</strong>
+  <div style="margin-top:.5rem;color:var(--text2)">
+    <div style="margin-bottom:.25rem">A. Les éléments constitutifs du contrat de travail</div>
+    <div>B. Les droits fondamentaux garantis au salarié</div>
+  </div>
+</div>
+
+<div class="info-box"><span>💡</span><div>Appuie-toi sur les <strong>documents 1 et 2</strong>. Pour chaque sous-partie : une idée principale + un argument + un exemple concret (chiffre, article de loi, situation réelle).</div></div>
+
+<label style="font-size:13px;font-weight:600;color:var(--blue);display:block;margin-bottom:.5rem">Rédige la Partie I ici :</label>
+<textarea class="answer-area xlarge" id="ta-dev1" placeholder="I. Le contrat de travail, un cadre juridique protecteur pour le salarié&#10;&#10;A. Les éléments constitutifs du contrat de travail&#10;...&#10;&#10;B. Les droits fondamentaux garantis au salarié&#10;..."></textarea>
+
+
+
+<div class="step-nav">
+  <button class="btn" onclick="goTo('s-intro')">← Étape 1</button>
+  <button class="btn btn-blue" onclick="goTo('s-transition')">Étape 3 : Transition →</button>
+</div>
+</div>
+
+<!-- ══ ÉTAPE 3 : TRANSITION ══════════════════════════════════════════════ -->
+<div id="s-transition" class="screen">
+<div class="section-title"><span>✍️ Étape 3 — La phrase de transition</span><span class="section-pts">/ 2 points</span></div>
+<div class="dots"><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+
+<div class="card cbg-or">
+  <h3 style="color:var(--ord)">Rappel — La phrase de transition</h3>
+  <p style="font-size:14px;color:var(--ord)">La transition assure le lien entre les deux parties. Elle doit :</p>
+  <ol style="color:var(--ord);font-size:14px;margin-top:.25rem">
+    <li>Résumer brièvement ce qui vient d'être démontré en Partie I</li>
+    <li>Annoncer clairement ce qui va être traité en Partie II</li>
+  </ol>
+  <p style="font-size:13px;color:var(--ord);margin-top:.5rem">Formule type : "Après avoir vu que... nous allons maintenant montrer que..."</p>
+</div>
+
+<label style="font-size:13px;font-weight:600;color:var(--blue);display:block;margin-bottom:.5rem">Rédige ta phrase de transition ici :</label>
+<textarea class="answer-area" id="ta-transition" style="min-height:80px" placeholder="Après avoir montré que le contrat de travail..."></textarea>
+
+
+
+<div class="step-nav">
+  <button class="btn" onclick="goTo('s-dev1')">← Étape 2</button>
+  <button class="btn btn-blue" onclick="goTo('s-dev2')">Étape 4 : Partie II →</button>
+</div>
+</div>
+
+<!-- ══ ÉTAPE 4 : PARTIE II ═══════════════════════════════════════════════ -->
+<div id="s-dev2" class="screen">
+<div class="section-title"><span>✍️ Étape 4 — Partie II du développement</span><span class="section-pts">/ 5 points</span></div>
+<div class="dots"><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div></div>
+
+<div class="card cl-coral" style="font-size:14px">
+  <strong>II. Des protections qui connaissent des limites et des risques</strong>
+  <div style="margin-top:.5rem;color:var(--text2)">
+    <div style="margin-bottom:.25rem">A. La précarité liée aux contrats atypiques</div>
+    <div>B. Le risque de rupture du contrat et ses conséquences</div>
+  </div>
+</div>
+
+<div class="info-box"><span>💡</span><div>Appuie-toi sur les <strong>documents 3 et 4</strong>. Utilise les chiffres du tableau (doc. 3) pour illustrer la montée des contrats précaires et le document 4 pour les modes de rupture.</div></div>
+
+<label style="font-size:13px;font-weight:600;color:var(--blue);display:block;margin-bottom:.5rem">Rédige la Partie II ici :</label>
+<textarea class="answer-area xlarge" id="ta-dev2" placeholder="II. Des protections qui connaissent des limites et des risques&#10;&#10;A. La précarité liée aux contrats atypiques&#10;...&#10;&#10;B. Le risque de rupture du contrat et ses conséquences&#10;..."></textarea>
+
+<div class="step-nav">
+  <button class="btn" onclick="goTo('s-transition')">← Étape 3</button>
+  <button class="btn btn-blue" onclick="goTo('s-conclusion')">Étape 5 : Conclusion →</button>
+</div>
+</div>
+
+<!-- ══ ÉTAPE 5 : CONCLUSION ══════════════════════════════════════════════ -->
+<div id="s-conclusion" class="screen">
+<div class="section-title"><span>✍️ Étape 5 — La conclusion</span><span class="section-pts">/ 3 points</span></div>
+<div class="dots"><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div></div>
+
+<div class="card cbg-or">
+  <h3 style="color:var(--ord)">Rappel — Les 3 éléments de la conclusion</h3>
+  <ol style="color:var(--ord);font-size:14px;margin-top:.25rem">
+    <li><strong>Bilan</strong> : rappel synthétique des deux parties ("Dans une 1ère partie... mais...")</li>
+    <li><strong>Avis personnel</strong> : argumenté, fondé sur les documents ("Je pense que... car...")</li>
+    <li><strong>Ouverture</strong> : question connexe, actualité, perspective d'avenir</li>
+  </ol>
+</div>
+
+<label style="font-size:13px;font-weight:600;color:var(--blue);display:block;margin-bottom:.5rem">Rédige ta conclusion ici :</label>
+<textarea class="answer-area large" id="ta-conclusion" placeholder="En résumé, nous avons vu que...&#10;&#10;À mon avis...&#10;&#10;Pour l'avenir / Cette question nous amène à..."></textarea>
+
+<div class="hr"></div>
+<div class="info-box" style="margin-bottom:1rem"><span>📄</span><div>Avant de voir la correction, <strong>enregistre ton devoir en PDF</strong> pour le transmettre à ton professeur. Clique sur le bouton ci-dessous, puis imprime en PDF depuis ton navigateur.</div></div>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:1rem">
+  <button class="btn btn-or btn-lg" onclick="exportPDF()">📄 Enregistrer mon devoir en PDF</button>
+</div>
+<div id="pdf-confirm" style="display:none;text-align:center;margin-bottom:1rem">
+  <div class="success-box" style="justify-content:center"><span>✅</span><div>Devoir enregistré ! Tu peux maintenant voir la correction.</div></div>
+  <button class="btn btn-teal btn-lg" style="margin-top:.75rem" onclick="goTo('s-final')">Voir la correction modèle →</button>
+</div>
+
+<div class="step-nav">
+  <button class="btn" onclick="goTo('s-dev2')">← Étape 4</button>
+  <span></span>
+</div>
+</div>
+
+<!-- ══ PAGE D'IMPRESSION ═══════════════════════════════════════════════════ -->
+<div id="print-zone" style="display:none">
+<style>
+@media print {
+  #print-zone { display:block !important; font-family:Georgia,serif; color:#000; }
+  .print-page { page-break-after:always; padding:1.5cm 2cm; max-width:100%; box-sizing:border-box; }
+  .print-page:last-child { page-break-after:avoid; }
+  .print-header { text-align:center; border-bottom:2px solid #333; padding-bottom:.75rem; margin-bottom:1rem; }
+  .print-title { font-size:16pt; font-weight:700; }
+  .print-sub { font-size:11pt; margin-top:.2rem; }
+  .print-meta { font-size:9pt; color:#555; margin-top:.2rem; }
+  .print-identite { font-size:10pt; margin-bottom:1.5rem; padding:.5rem; border:1px solid #ccc; }
+  .print-section-title { font-size:12pt; font-weight:700; border-bottom:1.5px solid #444; padding-bottom:.3rem; margin:1.2rem 0 .5rem; text-transform:uppercase; letter-spacing:.04em; }
+  .print-content { font-size:10.5pt; line-height:1.85; white-space:pre-wrap; min-height:60px; border-left:3px solid #ddd; padding-left:.75rem; }
+  .print-content.tall { min-height:180px; }
+  .print-content.xtall { min-height:280px; }
+  .print-note { font-size:9pt; color:#888; font-style:italic; margin-top:.3rem; }
+  .print-footer { font-size:8pt; color:#999; text-align:center; margin-top:2rem; border-top:1px solid #eee; padding-top:.5rem; }
+}
+</style>
+
+<!-- PAGE 1 : En-tête + Introduction -->
+<div class="print-page">
+  <div class="print-header">
+    <div class="print-title">Éco-Droit — Écrit structuré</div>
+    <div class="print-sub">Le contrat de travail : quelles protections pour le salarié ?</div>
+    <div class="print-meta">1ère &amp; Tle Bac Pro — LEGER Isabelle</div>
+  </div>
+  <div class="print-identite">
+    Nom / Prénom : _________________________________________________ &nbsp;&nbsp;&nbsp; Date : _______________
+  </div>
+  <div class="print-section-title">Introduction</div>
+  <div id="print-intro" class="print-content tall"></div>
+  <div class="print-note">Introduction / 5 points</div>
+  <div class="print-footer">Éco-Droit — Écrit structuré — LEGER Isabelle</div>
+</div>
+
+<!-- PAGE 2 : Partie I -->
+<div class="print-page">
+  <div class="print-header">
+    <div class="print-title">Éco-Droit — Écrit structuré</div>
+    <div class="print-sub">Le contrat de travail : quelles protections pour le salarié ?</div>
+  </div>
+  <div class="print-section-title">Partie I — Le contrat de travail, un cadre juridique protecteur</div>
+  <div class="print-note" style="margin-bottom:.5rem">A. Les éléments constitutifs &nbsp;|&nbsp; B. Les droits fondamentaux garantis</div>
+  <div id="print-dev1" class="print-content xtall"></div>
+  <div class="print-note">Partie I / 5 points</div>
+  <div class="print-footer">Éco-Droit — Écrit structuré — LEGER Isabelle</div>
+</div>
+
+<!-- PAGE 3 : Transition + Partie II -->
+<div class="print-page">
+  <div class="print-header">
+    <div class="print-title">Éco-Droit — Écrit structuré</div>
+    <div class="print-sub">Le contrat de travail : quelles protections pour le salarié ?</div>
+  </div>
+  <div class="print-section-title">Phrase de transition</div>
+  <div id="print-transition" class="print-content"></div>
+  <div class="print-note">Transition / 2 points</div>
+  <div class="print-section-title" style="margin-top:1.5rem">Partie II — Des protections qui connaissent des limites</div>
+  <div class="print-note" style="margin-bottom:.5rem">A. La précarité liée aux contrats atypiques &nbsp;|&nbsp; B. Le risque de rupture du contrat</div>
+  <div id="print-dev2" class="print-content xtall"></div>
+  <div class="print-note">Partie II / 5 points</div>
+  <div class="print-footer">Éco-Droit — Écrit structuré — LEGER Isabelle</div>
+</div>
+
+<!-- PAGE 4 : Conclusion -->
+<div class="print-page">
+  <div class="print-header">
+    <div class="print-title">Éco-Droit — Écrit structuré</div>
+    <div class="print-sub">Le contrat de travail : quelles protections pour le salarié ?</div>
+  </div>
+  <div class="print-section-title">Conclusion</div>
+  <div id="print-conclusion" class="print-content tall"></div>
+  <div class="print-note">Conclusion / 3 points</div>
+  <div style="margin-top:2rem;padding:1rem;border:1px dashed #ccc;font-size:10pt;color:#555">
+    <strong>Espace réservé au professeur — Appréciation :</strong><br><br><br><br>
+    Note : ________ / 20 &nbsp;&nbsp;&nbsp;&nbsp; Signature : _______________________
+  </div>
+  <div class="print-footer">Éco-Droit — Écrit structuré — LEGER Isabelle</div>
+</div>
+</div>
+
+
+<!-- ══ CORRECTION FINALE ═════════════════════════════════════════════════ -->
+<div id="s-final" class="screen">
+
+<div style="text-align:center;padding:2rem 0 1.5rem">
+  <div style="font-size:56px;margin-bottom:1rem">🎉</div>
+  <h1>Bravo, tu as terminé !</h1>
+  <p style="max-width:480px;margin:.75rem auto 0;font-size:15px">Compare maintenant ta rédaction avec la correction modèle ci-dessous. C'est comme ça qu'on progresse !</p>
+</div>
+
+<div class="card cbg-teal" style="margin-bottom:1.5rem">
+  <h3 style="color:var(--td)">💪 Un mot pour le bac</h3>
+  <p style="font-size:14px;color:var(--td);margin-top:.5rem">Tu viens de t'entraîner sur un exercice complet d'écrit structuré — c'est exactement ce que tu auras au bac. L'essentiel est de <strong>respecter la structure</strong> (accroche, concepts, problématique, plan, transitions, conclusion) et de <strong>s'appuyer sur les documents</strong> à chaque sous-partie. Chaque entraînement compte. Tu es sur la bonne voie, continue comme ça !</p>
+</div>
+
+<div class="info-box" style="margin-bottom:1.5rem"><span>💡</span><div>Lis chaque correction avec attention. Pour chaque partie, demande-toi : est-ce que j'avais les mêmes idées ? Est-ce que j'ai cité les documents ? Est-ce que ma rédaction était aussi claire ?</div></div>
+
+<div class="section-title" style="background:var(--purple)"><span>✅ Introduction — Correction modèle</span><span class="section-pts">/ 5 pts</span></div>
+<div class="corr-section corr-intro" style="display:block;margin-bottom:1.25rem">
+  <p style="color:var(--pd);font-size:14px">En France, plus de 26 millions de personnes exercent leur activité dans le cadre d'un contrat de travail. Ce lien juridique constitue l'un des piliers du droit social français. Mais ce contrat protège-t-il réellement le salarié face au pouvoir de l'employeur ?</p>
+  <p style="color:var(--pd);font-size:14px;margin-top:.5rem">Le <strong>contrat de travail</strong> est une convention par laquelle une personne s'engage à travailler pour une autre, moyennant une rémunération, dans un lien de subordination juridique. La <strong>protection du salarié</strong> désigne l'ensemble des droits et garanties légaux qui s'appliquent dès la conclusion du contrat.</p>
+  <p style="color:var(--pd);font-size:14px;margin-top:.5rem">Nous nous demanderons donc : en quoi le contrat de travail constitue-t-il un cadre protecteur pour le salarié, et quelles en sont les limites ?</p>
+  <p style="color:var(--pd);font-size:14px;margin-top:.5rem">Dans une première partie, nous verrons que le contrat de travail offre un cadre juridique protecteur. Dans une seconde partie, nous montrerons que ces protections connaissent des limites et des risques.</p>
+  <div style="margin-top:.75rem;background:#fff;border-radius:6px;padding:10px 14px">
+    <strong style="font-size:13px;color:var(--pd)">Ce qu'on attend :</strong>
+    <ul style="margin-top:.5rem;color:var(--pd);font-size:13px;line-height:2">
+      <li>Accroche avec un chiffre ou un fait concret tiré des documents</li>
+      <li>Définition du contrat de travail (3 éléments : prestation, rémunération, subordination)</li>
+      <li>Définition de la notion de protection du salarié</li>
+      <li>Problématique clairement reformulée</li>
+      <li>Annonce du plan en 2 parties avec les formules conventionnelles</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title" style="background:var(--teal)"><span>✅ Partie I — Correction modèle</span><span class="section-pts">/ 5 pts</span></div>
+<div class="corr-section corr-dev" style="display:block;margin-bottom:1.25rem">
+  <p style="color:var(--td);font-weight:600;font-size:14px">I. Le contrat de travail, un cadre juridique protecteur pour le salarié</p>
+  <p style="font-size:14px;color:var(--text2);margin-top:.5rem">Dans cette première partie, nous allons montrer que le contrat de travail constitue un cadre juridique solide qui protège le salarié dès sa conclusion.</p>
+  <p style="color:var(--td);font-weight:600;font-size:14px;margin-top:.75rem">A. Les éléments constitutifs du contrat de travail</p>
+  <p style="font-size:14px;color:var(--text2)">Le contrat de travail repose sur trois éléments indispensables définis par la jurisprudence (Cass. soc., 1954) : une prestation de travail, une rémunération qui ne peut être inférieure au SMIC (11,65 euros/h en 2024), et le lien de subordination juridique. Ce troisième élément est fondamental : il distingue le salarié du travailleur indépendant et justifie toutes les protections légales. Même si les parties choisissent une autre appellation, le juge peut requalifier le contrat en contrat de travail dès lors que ces trois éléments sont réunis.</p>
+  <p style="color:var(--td);font-weight:600;font-size:14px;margin-top:.75rem">B. Les droits fondamentaux garantis au salarié</p>
+  <p style="font-size:14px;color:var(--text2)">Le contrat de travail ouvre un socle de droits que la loi impose : salaire mensuel au moins égal au SMIC, 30 jours de congés payés par an (art. L.3141-3 Code du travail), protection sociale complète (maladie, retraite, chômage), durée de travail encadrée à 35 heures par semaine et recours possible devant le Conseil de prud'hommes. Ces droits forment un plancher impératif : aucun accord, même signé par le salarié, ne peut y déroger à la baisse.</p>
+  <div style="margin-top:.75rem;background:#fff;border-radius:6px;padding:10px 14px">
+    <strong style="font-size:13px;color:var(--td)">Ce qu'on attend :</strong>
+    <ul style="margin-top:.5rem;color:var(--td);font-size:13px;line-height:2">
+      <li>Introduction de la partie avec le titre</li>
+      <li>A : les 3 éléments constitutifs cités et expliqués + exemple concret</li>
+      <li>B : au moins 3 droits fondamentaux + référence à un article ou chiffre du dossier</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title" style="background:var(--or)"><span>✅ Transition — Correction modèle</span><span class="section-pts">/ 2 pts</span></div>
+<div class="corr-section corr-ccl" style="display:block;margin-bottom:1.25rem">
+  <p style="font-size:14px;color:var(--text2)">Après avoir montré que le contrat de travail offre un cadre juridique solide et des droits fondamentaux garantis au salarié, nous allons maintenant voir que ces protections connaissent des limites importantes, liées à l'essor des contrats précaires et aux risques de rupture du contrat.</p>
+  <div style="margin-top:.75rem;background:#fff;border-radius:6px;padding:10px 14px">
+    <strong style="font-size:13px;color:var(--ord)">Ce qu'on attend :</strong>
+    <ul style="margin-top:.5rem;color:var(--ord);font-size:13px;line-height:2">
+      <li>Un bilan clair et court de la Partie I</li>
+      <li>Une annonce claire de la Partie II</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title" style="background:var(--teal)"><span>✅ Partie II — Correction modèle</span><span class="section-pts">/ 5 pts</span></div>
+<div class="corr-section corr-dev" style="display:block;margin-bottom:1.25rem">
+  <p style="color:var(--td);font-weight:600;font-size:14px">II. Des protections qui connaissent des limites et des risques</p>
+  <p style="font-size:14px;color:var(--text2);margin-top:.5rem">Si le contrat de travail protège le salarié, ces protections ne sont pas sans limites. La montée des contrats précaires et le risque de rupture fragilisent de nombreux travailleurs.</p>
+  <p style="color:var(--td);font-weight:600;font-size:14px;margin-top:.75rem">A. La précarité liée aux contrats atypiques</p>
+  <p style="font-size:14px;color:var(--text2)">Bien que le CDI reste la norme (83,1 % des salariés en 2023 selon l'INSEE), sa part diminue depuis 2015 (85,5 %). Les contrats précaires (CDD, intérim) représentent plus de 13 % des emplois et génèrent de l'instabilité : le salarié ne sait pas si son contrat sera renouvelé. Seule la prime de précarité (10 % de la rémunération brute) compense partiellement ce risque, mais elle n'efface pas l'incertitude du lendemain.</p>
+  <p style="color:var(--td);font-weight:600;font-size:14px;margin-top:.75rem">B. Le risque de rupture du contrat et ses conséquences</p>
+  <p style="font-size:14px;color:var(--text2)">La rupture du contrat est un moment critique. Le licenciement (personnel ou économique) doit reposer sur une cause réelle et sérieuse. La rupture conventionnelle (plus de 500 000 en 2023) peut sembler douce, mais le salarié peut se sentir contraint d'accepter. Depuis les ordonnances Macron de 2017, un barème légal plafonne les indemnités prud'homales, limitant parfois la réparation accordée au salarié.</p>
+  <div style="margin-top:.75rem;background:#fff;border-radius:6px;padding:10px 14px">
+    <strong style="font-size:13px;color:var(--td)">Ce qu'on attend :</strong>
+    <ul style="margin-top:.5rem;color:var(--td);font-size:13px;line-height:2">
+      <li>Introduction de la partie avec le titre</li>
+      <li>A : données chiffrées du document 3 + explication de la précarité</li>
+      <li>B : au moins 2 modes de rupture cités et expliqués + référence au document 4</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-title" style="background:var(--or)"><span>✅ Conclusion — Correction modèle</span><span class="section-pts">/ 3 pts</span></div>
+<div class="corr-section corr-ccl" style="display:block;margin-bottom:1.25rem">
+  <p style="font-size:14px;color:var(--text2)">En résumé, nous avons montré que le contrat de travail constitue un socle protecteur essentiel pour le salarié (cadre juridique clair, droits fondamentaux garantis), mais que la montée des contrats précaires et les risques liés à la rupture en limitent la portée réelle.</p>
+  <p style="font-size:14px;color:var(--text2);margin-top:.5rem">À mon avis, si la loi offre un cadre protecteur solide, son efficacité dépend de la capacité du salarié à faire valoir ses droits, ce qui suppose une bonne connaissance du droit du travail, souvent insuffisante chez les jeunes entrants sur le marché.</p>
+  <p style="font-size:14px;color:var(--text2);margin-top:.5rem">Cette réflexion nous amène à nous interroger sur l'avenir du contrat de travail face à l'essor du travail indépendant et des plateformes numériques.</p>
+  <div style="margin-top:.75rem;background:#fff;border-radius:6px;padding:10px 14px">
+    <strong style="font-size:13px;color:var(--ord)">Ce qu'on attend :</strong>
+    <ul style="margin-top:.5rem;color:var(--ord);font-size:13px;line-height:2">
+      <li>Un bilan synthétique des deux parties</li>
+      <li>Un avis personnel argumenté (pas une simple opinion)</li>
+      <li>Une ouverture pertinente sur une question connexe</li>
+    </ul>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:2rem;margin-bottom:1rem">
+  <button class="btn btn-blue" onclick="restart()">Recommencer l'exercice</button>
+</div>
+<div style="text-align:center;font-size:12px;color:var(--text3)">LEGER Isabelle — 1ère &amp; Tle Bac Pro</div>
+</div>
+
+</div>
+<script>
+function goTo(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleRev(id){
+  var el=document.getElementById(id);
+  el.classList.toggle('open');
+  el.previousElementSibling.textContent=el.classList.contains('open')?'Masquer la correction ↑':'Voir la correction modèle ↓';
+}
+function exportPDF(){
+  var fields={
+    intro:     document.getElementById('ta-intro').value.trim()||'(non renseigné)',
+    dev1:      document.getElementById('ta-dev1').value.trim()||'(non renseigné)',
+    transition:document.getElementById('ta-transition').value.trim()||'(non renseigné)',
+    dev2:      document.getElementById('ta-dev2').value.trim()||'(non renseigné)',
+    conclusion:document.getElementById('ta-conclusion').value.trim()||'(non renseigné)'
+  };
+
+  function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function page(titre,sous,contenu,pts){
+    return '<div class="page">'
+      +'<div class="entete"><div class="titre">Éco-Droit — Écrit structuré</div>'
+      +'<div class="sous">Le contrat de travail : quelles protections pour le salarié ?</div>'
+      +'<div class="meta">1ère &amp; Tle Bac Pro — LEGER Isabelle</div></div>'
+      +'<div class="section-titre">'+titre+'</div>'
+      +(sous?'<div class="sous-titre">'+sous+'</div>':'')
+      +'<div class="contenu">'+esc(contenu)+'</div>'
+      +'<div class="pts">'+pts+'</div>'
+      +'<div class="pied">Éco-Droit — Écrit structuré — LEGER Isabelle</div>'
+      +'</div>';
+  }
+
+  var html='<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">'
+    +'<title>Devoir — Le contrat de travail</title>'
+    +'<style>'
+    +'*{box-sizing:border-box;margin:0;padding:0}'
+    +'body{font-family:Georgia,serif;font-size:11pt;color:#000;background:#fff}'
+    +'.page{page-break-after:always;padding:2cm 2.5cm;min-height:27cm}'
+    +'.page:last-child{page-break-after:avoid}'
+    +'.entete{text-align:center;border-bottom:2px solid #333;padding-bottom:.75rem;margin-bottom:1rem}'
+    +'.titre{font-size:15pt;font-weight:700}'
+    +'.sous{font-size:10.5pt;margin-top:.2rem}'
+    +'.meta{font-size:9pt;color:#555;margin-top:.2rem}'
+    +'.identite{font-size:10pt;padding:.6rem .8rem;border:1px solid #aaa;margin-bottom:1.5rem}'
+    +'.section-titre{font-size:12pt;font-weight:700;border-bottom:2px solid #444;padding-bottom:.3rem;margin:1rem 0 .5rem;text-transform:uppercase;letter-spacing:.04em}'
+    +'.sous-titre{font-size:9.5pt;color:#555;font-style:italic;margin-bottom:.6rem}'
+    +'.contenu{font-size:10.5pt;line-height:1.85;white-space:pre-wrap;min-height:12rem;padding:.5rem .75rem;border-left:3px solid #ccc}'
+    +'.pts{font-size:8.5pt;color:#888;font-style:italic;margin-top:.4rem}'
+    +'.pied{font-size:8pt;color:#aaa;text-align:center;margin-top:auto;padding-top:1.5rem;border-top:1px solid #eee;position:absolute;bottom:1.5cm;left:2.5cm;right:2.5cm}'
+    +'.espace-prof{margin-top:2rem;padding:1rem;border:1px dashed #bbb;font-size:10pt;color:#444;line-height:2.5}'
+    +'@page{margin:0}'
+    +'@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
+    +'</style></head><body>'
+
+    // PAGE 1 : identité + intro
+    +'<div class="page" style="position:relative">'
+    +'<div class="entete"><div class="titre">Éco-Droit — Écrit structuré</div>'
+    +'<div class="sous">Le contrat de travail : quelles protections pour le salarié ?</div>'
+    +'<div class="meta">1ère &amp; Tle Bac Pro — LEGER Isabelle</div></div>'
+    +'<div class="identite">Nom / Prénom : _____________________________________________ &nbsp;&nbsp; Date : ________________</div>'
+    +'<div class="section-titre">Introduction</div>'
+    +'<div class="contenu">'+esc(fields.intro)+'</div>'
+    +'<div class="pts">Introduction — 5 points</div>'
+    +'<div class="pied">Éco-Droit — Écrit structuré — LEGER Isabelle</div>'
+    +'</div>'
+
+    // PAGE 2 : Partie I
+    +'<div class="page" style="position:relative">'
+    +'<div class="entete"><div class="titre">Éco-Droit — Écrit structuré</div>'
+    +'<div class="sous">Le contrat de travail : quelles protections pour le salarié ?</div></div>'
+    +'<div class="section-titre">Partie I — Le contrat de travail, un cadre juridique protecteur</div>'
+    +'<div class="sous-titre">A. Les éléments constitutifs &nbsp;|&nbsp; B. Les droits fondamentaux garantis au salarié</div>'
+    +'<div class="contenu" style="min-height:18rem">'+esc(fields.dev1)+'</div>'
+    +'<div class="pts">Partie I — 5 points</div>'
+    +'<div class="pied">Éco-Droit — Écrit structuré — LEGER Isabelle</div>'
+    +'</div>'
+
+    // PAGE 3 : Transition + Partie II
+    +'<div class="page" style="position:relative">'
+    +'<div class="entete"><div class="titre">Éco-Droit — Écrit structuré</div>'
+    +'<div class="sous">Le contrat de travail : quelles protections pour le salarié ?</div></div>'
+    +'<div class="section-titre">Phrase de transition</div>'
+    +'<div class="contenu" style="min-height:4rem">'+esc(fields.transition)+'</div>'
+    +'<div class="pts">Transition — 2 points</div>'
+    +'<div class="section-titre" style="margin-top:1.5rem">Partie II — Des protections qui connaissent des limites</div>'
+    +'<div class="sous-titre">A. La précarité liée aux contrats atypiques &nbsp;|&nbsp; B. Le risque de rupture du contrat</div>'
+    +'<div class="contenu" style="min-height:14rem">'+esc(fields.dev2)+'</div>'
+    +'<div class="pts">Partie II — 5 points</div>'
+    +'<div class="pied">Éco-Droit — Écrit structuré — LEGER Isabelle</div>'
+    +'</div>'
+
+    // PAGE 4 : Conclusion + espace prof
+    +'<div class="page" style="position:relative">'
+    +'<div class="entete"><div class="titre">Éco-Droit — Écrit structuré</div>'
+    +'<div class="sous">Le contrat de travail : quelles protections pour le salarié ?</div></div>'
+    +'<div class="section-titre">Conclusion</div>'
+    +'<div class="contenu" style="min-height:12rem">'+esc(fields.conclusion)+'</div>'
+    +'<div class="pts">Conclusion — 3 points</div>'
+    +'<div class="espace-prof">'
+    +'<strong>Espace réservé au professeur — Appréciation :</strong><br><br><br><br>'
+    +'Note : __________ / 20 &nbsp;&nbsp;&nbsp;&nbsp; Signature : _________________________'
+    +'</div>'
+    +'<div class="pied">Éco-Droit — Écrit structuré — LEGER Isabelle</div>'
+    +'</div>'
+
+    +'</body></html>';
+
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write(html);
+  w.document.close();
+  w.focus();
+  setTimeout(function(){w.print();},600);
+
+  // Afficher le bouton "Suivant"
+  document.getElementById('pdf-confirm').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function restart(){
+  ['ta-intro','ta-dev1','ta-transition','ta-dev2','ta-conclusion'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.value='';
+  });
+  document.getElementById('pdf-confirm').style.display='none';
+  goTo('s-cover');
+}
+</script>
+</body>
+</html>
